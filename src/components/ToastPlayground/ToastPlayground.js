@@ -16,7 +16,7 @@ function ToastPlayground() {
   const [message, setMessage] = React.useState(defaultMessage);
   const [variant, setVariant] = React.useState(defaultVariantOption);
 
-  const {toasts, setToasts} = React.useContext(ToastContext)
+  const {toasts, setToasts, dismissToast} = React.useContext(ToastContext)
 
   function addToastToShelf(event) {
     event.preventDefault();
@@ -30,13 +30,6 @@ function ToastPlayground() {
     setToasts([...toasts, nextToast]);
     setMessage(defaultMessage);
     setVariant(defaultVariantOption);
-  }
-
-  function dismissToast(id) {
-    const nextToasts = toasts.filter((item) => {
-      return item.id !== id;
-    });
-    setToasts(nextToasts);
   }
 
   return (
