@@ -7,9 +7,13 @@ import styles from "./ToastPlayground.module.css";
 import ToastShelf from "../ToastShelf/ToastShelf";
 
 const VARIANT_OPTIONS = ["notice", "warning", "success", "error"];
+
 function ToastPlayground() {
-  const [message, setMessage] = React.useState("");
-  const [variant, setVariant] = React.useState(VARIANT_OPTIONS[0]);
+  const defaultMessage = ""
+  const defaultVariantOption = VARIANT_OPTIONS[0]
+
+  const [message, setMessage] = React.useState(defaultMessage);
+  const [variant, setVariant] = React.useState(defaultVariantOption);
   const [toastIsShown, setToastIsShown] = React.useState(false);
 
   const [toastStack, setToastStack] = React.useState([]);
@@ -21,6 +25,8 @@ function ToastPlayground() {
       </Toast>
     );
     setToastStack([...toastStack, nextToast]);
+    setMessage(defaultMessage)
+    setVariant(defaultVariantOption)
   }
 
   function dismissToast() {
