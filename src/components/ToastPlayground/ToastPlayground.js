@@ -44,7 +44,7 @@ function ToastPlayground() {
         <img alt="Cute toast mascot" src="/toast.png" />
         <h1>Toast Playground</h1>
       </header>
-      <ToastShelf toastStack={toasts} dismissToast={dismissToast} />
+      <ToastShelf toasts={toasts} dismissToast={dismissToast} />
 
       <form onSubmit={(event) => addToastToShelf(event)}>
         <div className={styles.controlsWrapper}>
