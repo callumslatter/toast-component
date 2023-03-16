@@ -16,7 +16,7 @@ function ToastPlayground() {
   }
 
   function dismissToast() {
-    setToastIsShown(false)
+    setToastIsShown(false);
   }
 
   return (
@@ -25,8 +25,11 @@ function ToastPlayground() {
         <img alt="Cute toast mascot" src="/toast.png" />
         <h1>Toast Playground</h1>
       </header>
-
-      <Toast value={message} type={variant} isShown={toastIsShown} dismissToast={dismissToast} />
+      {toastIsShown && (
+        <Toast variant={variant} handleDismiss={dismissToast}>
+          {message}{" "}
+        </Toast>
+      )}
 
       <div className={styles.controlsWrapper}>
         <div className={styles.row}>
