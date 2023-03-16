@@ -5,7 +5,7 @@ export const ToastContext = React.createContext();
 function ToastProvider({ children }) {
   const [toasts, setToasts] = React.useState([]);
 
-  // Remove toasts on key down
+  // Removes toasts on Escape key
   React.useEffect(() => {
     function handleKeyDown(event) {
       if (event.code === "Escape") {
@@ -18,7 +18,7 @@ function ToastProvider({ children }) {
     return () => {
       window.removeEventListener("keydown", handleKeyDown);
     };
-  });
+  }, []);
 
   function dismissToast(id) {
     const nextToasts = toasts.filter((item) => {
