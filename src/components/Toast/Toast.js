@@ -18,29 +18,22 @@ const ICONS_BY_VARIANT = {
   error: AlertOctagon,
 };
 
-function Toast({ children, variant }) {
-  const [toastIsShown, setToastIsShown] = React.useState(true);
-
-  function dismissToast() {
-    setToastIsShown(false);
-  }
+function Toast({ id, dismissToast, children, variant }) {
 
   // If type is supplied, render icon accordingly
   const Icon = variant ? ICONS_BY_VARIANT[variant] : "Info";
 
   return (
-    toastIsShown && (
-      <div className={`${styles.toast} ${styles[variant]}`}>
-        <div className={styles.iconContainer}>
-          <Icon size={24} />
-        </div>
-        <p className={styles.content}>{children}</p>
-        <button className={styles.closeButton} onClick={dismissToast}>
-          <X size={24} />
-          <VisuallyHidden>Dismiss message</VisuallyHidden>
-        </button>
+    <div className={`${styles.toast} ${styles[variant]}`}>
+      <div className={styles.iconContainer}>
+        <Icon size={24} />
       </div>
-    )
+      <p className={styles.content}>{children}</p>
+      <button className={styles.closeButton} onClick={() => dismissToast(id)}>
+        <X size={24} />
+        <VisuallyHidden>Dismiss message</VisuallyHidden>
+      </button>
+    </div>
   );
 }
 
