@@ -14,13 +14,13 @@ function ToastPlayground() {
 
   const [message, setMessage] = React.useState(defaultMessage);
   const [variant, setVariant] = React.useState(defaultVariantOption);
-  const [toastIsShown, setToastIsShown] = React.useState(false);
+
 
   const [toastStack, setToastStack] = React.useState([]);
 
   function addToastToShelf() {
     const nextToast = (
-      <Toast variant={variant} handleDismiss={dismissToast} key={crypto.randomUUID()}>
+      <Toast variant={variant} key={crypto.randomUUID()}>
         {message}
       </Toast>
     );
@@ -29,9 +29,7 @@ function ToastPlayground() {
     setVariant(defaultVariantOption)
   }
 
-  function dismissToast() {
-    setToastIsShown(false);
-  }
+
 
   return (
     <div className={styles.wrapper}>
