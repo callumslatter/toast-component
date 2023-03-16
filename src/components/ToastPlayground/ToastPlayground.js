@@ -18,12 +18,14 @@ function ToastPlayground() {
   const [toastStack, setToastStack] = React.useState([]);
 
   function addToastToShelf(event) {
-    event.preventDefault()
-    const nextToast = (
-      <Toast variant={variant} key={crypto.randomUUID()}>
-        {message}
-      </Toast>
-    );
+    event.preventDefault();
+
+    const nextToast = {
+      key: crypto.randomUUID(),
+      message,
+      variant
+    }
+    console.log(nextToast)
     setToastStack([...toastStack, nextToast]);
     setMessage(defaultMessage);
     setVariant(defaultVariantOption);
@@ -35,11 +37,7 @@ function ToastPlayground() {
         <img alt="Cute toast mascot" src="/toast.png" />
         <h1>Toast Playground</h1>
       </header>
-      <ToastShelf>
-        {toastStack.map((item) => {
-          return item;
-        })}
-      </ToastShelf>
+      <ToastShelf toastStack={toastStack} />
 
       <form onSubmit={(event) => addToastToShelf(event)}>
         <div className={styles.controlsWrapper}>

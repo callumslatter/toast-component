@@ -1,11 +1,20 @@
 import React from "react";
 
+import Toast from "../Toast/Toast";
 import styles from "./ToastShelf.module.css";
 
-function ToastShelf({ children }) {
+function ToastShelf({ toastStack }) {
   return (
     <ol className={styles.wrapper}>
-        {children}
+      <li className={styles.toastWrapper}>
+        {toastStack.map((item) => {
+          return (
+            <Toast variant={item.variant} key={item.key}>
+              {item.message}
+            </Toast>
+          );
+        })}
+      </li>
     </ol>
   );
 }
