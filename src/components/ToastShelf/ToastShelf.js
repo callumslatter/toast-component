@@ -5,8 +5,9 @@ import Toast from "../Toast/Toast";
 import styles from "./ToastShelf.module.css";
 
 function ToastShelf() {
-
+  
   const {toasts} = React.useContext(ToastContext)
+
   return (
     <ol className={styles.wrapper}>
       {toasts.map((item) => {

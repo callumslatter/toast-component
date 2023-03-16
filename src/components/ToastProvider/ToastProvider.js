@@ -12,9 +12,20 @@ function ToastProvider({ children }) {
     setToasts(nextToasts);
   });
 
+  function createToast(message, variant) {
+    // Refactor
+    const nextToast = {
+      id: crypto.randomUUID(),
+      message,
+      variant,
+    };
+
+    setToasts([...toasts, nextToast]);
+  }
+
   return (
     <ToastContext.Provider
-      value={{ toasts, setToasts, dismissToast }}
+      value={{ toasts, setToasts, dismissToast, createToast }}
     >
       {children}
     </ToastContext.Provider>
