@@ -5,11 +5,15 @@ import Toast from "../Toast/Toast";
 import styles from "./ToastShelf.module.css";
 
 function ToastShelf() {
-  
-  const {toasts} = React.useContext(ToastContext)
+  const { toasts } = React.useContext(ToastContext);
 
   return (
-    <ol className={styles.wrapper}>
+    <ol
+      className={styles.wrapper}
+      role="region"
+      aria-live="polite"
+      aria-label="Notification"
+    >
       {toasts.map((item) => {
         return (
           <li className={styles.toastWrapper} key={item.id}>

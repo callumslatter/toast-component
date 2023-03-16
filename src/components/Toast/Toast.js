@@ -19,7 +19,7 @@ const ICONS_BY_VARIANT = {
   error: AlertOctagon,
 };
 
-function Toast({ id, children, variant }) {
+function Toast({ id, variant, children }) {
   const { dismissToast } = React.useContext(ToastContext);
 
   // If type is supplied, render icon accordingly
@@ -30,10 +30,17 @@ function Toast({ id, children, variant }) {
       <div className={styles.iconContainer}>
         <Icon size={24} />
       </div>
-      <p className={styles.content}>{children}</p>
-      <button className={styles.closeButton} onClick={() => dismissToast(id)}>
+      <p className={styles.content}>
+        <VisuallyHidden>{variant}</VisuallyHidden>
+        {children}
+      </p>
+      <button
+        className={styles.closeButton}
+        aria-label="Dismiss message"
+        aria-live="off"
+        onClick={() => dismissToast(id)}
+      >
         <X size={24} />
-        <VisuallyHidden>Dismiss message</VisuallyHidden>
       </button>
     </div>
   );
