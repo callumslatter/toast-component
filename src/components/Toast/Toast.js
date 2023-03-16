@@ -10,6 +10,7 @@ import {
 import VisuallyHidden from "../VisuallyHidden";
 
 import styles from "./Toast.module.css";
+import { ToastContext } from "../ToastProvider/ToastProvider";
 
 const ICONS_BY_VARIANT = {
   notice: Info,
@@ -18,7 +19,8 @@ const ICONS_BY_VARIANT = {
   error: AlertOctagon,
 };
 
-function Toast({ id, dismissToast, children, variant }) {
+function Toast({ id, children, variant }) {
+  const { dismissToast } = React.useContext(ToastContext);
 
   // If type is supplied, render icon accordingly
   const Icon = variant ? ICONS_BY_VARIANT[variant] : "Info";

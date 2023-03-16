@@ -5,8 +5,6 @@ export const ToastContext = React.createContext();
 function ToastProvider({ children }) {
   const [toasts, setToasts] = React.useState([]);
 
-  
-
   const dismissToast = React.useCallback((id) => {
     const nextToasts = toasts.filter((item) => {
       return item.id !== id;
