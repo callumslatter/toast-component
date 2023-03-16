@@ -1,12 +1,11 @@
-import React from 'react';
+import React from "react";
 
-import Toast from '../Toast';
-import styles from './ToastShelf.module.css';
+import styles from "./ToastShelf.module.css";
 
-function ToastShelf({children}) {
+function ToastShelf({ children }) {
   return (
     <ol className={styles.wrapper}>
-      {children}
+        {children}
     </ol>
   );
 }
