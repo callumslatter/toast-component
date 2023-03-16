@@ -13,14 +13,16 @@ function ToastProvider({ children }) {
   });
 
   function createToast(message, variant) {
-    // Refactor
-    const nextToast = {
-      id: crypto.randomUUID(),
-      message,
-      variant,
-    };
+    const nextToasts = [
+      ...toasts,
+      {
+        id: crypto.randomUUID(),
+        message,
+        variant,
+      },
+    ];
 
-    setToasts([...toasts, nextToast]);
+    setToasts(nextToasts);
   }
 
   return (
