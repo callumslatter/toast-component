@@ -20,7 +20,7 @@ function ToastPlayground() {
 
   function addToastToShelf() {
     const nextToast = (
-      <Toast variant={variant} handleDismiss={dismissToast}>
+      <Toast variant={variant} handleDismiss={dismissToast} key={crypto.randomUUID()}>
         {message}
       </Toast>
     );
@@ -40,9 +40,6 @@ function ToastPlayground() {
         <h1>Toast Playground</h1>
       </header>
       <ToastShelf>
-        {/* <Toast variant={variant} handleDismiss={dismissToast}>
-          {message}
-        </Toast> */}
         {toastStack.map((item) => {
           return item;
         })}
