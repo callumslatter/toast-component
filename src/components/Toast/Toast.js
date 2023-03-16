@@ -20,10 +20,13 @@ const ICONS_BY_VARIANT = {
 
 function Toast({value, type}) {
 
+  // If type is supplied, render icon accordingly
+  const Tag = type ? ICONS_BY_VARIANT[type] : 'Info'
+  
   return (
-    <div className={`${styles.toast} ${styles.notice}`}>
+    <div className={`${styles.toast} ${styles[type]}`}>
       <div className={styles.iconContainer}>
-        <Info size={24} />
+        <Tag size={24} />
       </div>
       <p className={styles.content}>
         {value}
